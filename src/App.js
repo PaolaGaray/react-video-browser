@@ -1,10 +1,10 @@
+
 import React, { Component } from 'react'
 import youtube from './apis/youtube'
 import SearchBar from './components/SearchBar'
 import VideoList from './components/VideoList'
 import VideoDetail from './components/VideoDetail'
 
-const KEY = 'AIzaSyCseZ99eL2PbumZxMcHouL1yRu_y65qzrQ'
 
 export default class App extends Component {
 
@@ -12,6 +12,10 @@ export default class App extends Component {
     videos: [],
     selectedVideo: null
   };
+
+  componentDidMount = () => {
+    this.handleSearchSubmit('Buildings')
+  }
 
   handleSearchSubmit = async (query) => {
     const response = await youtube.get('/search', {
@@ -23,12 +27,14 @@ export default class App extends Component {
         key: KEY
       }
     });
-    this.setState({ videos: response.data.items })
+    this.setState({ 
+        videos: response.data.items, 
+        selectedVideo: response.data.items[0]
+      })
   }
 
 
   handleVideoSelect = (video) => {
-        console.log('From the App!',video)
         this.setState({ selectedVideo: video })
   }
 
@@ -38,13 +44,21 @@ export default class App extends Component {
               <SearchBar 
                 runMeWhenUserSubmits={this.handleSearchSubmit}
               />
-              <VideoDetail 
-                video={this.state.selectedVideo}
-              />
-              <VideoList
-                videos={this.state.videos}
-                onVideoSelect={this.handleVideoSelect} 
-              />
+              <div className="ui grid">
+                  <div className="ui row">
+                      <div className="eleven wide column">
+                          <VideoDetail 
+                            video={this.state.selectedVideo}
+                          />
+                      </div>
+                      <div className="five wide column">
+                          <VideoList
+                            videos={this.state.videos}
+                            onVideoSelect={this.handleVideoSelect} 
+                          />
+                      </div>
+                  </div>
+              </div>
             </div>
         )
     }
