@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar'
 import VideoList from './components/VideoList'
 import VideoDetail from './components/VideoDetail'
 
+const YOUTUBE_KEY = process.env.REACT_APP_YOUTUBE_KEY;
 
 export default class App extends Component {
 
@@ -14,7 +15,7 @@ export default class App extends Component {
   };
 
   componentDidMount = () => {
-    this.handleSearchSubmit('Buildings')
+    this.handleSearchSubmit('Klangkarussell')
   }
 
   handleSearchSubmit = async (query) => {
@@ -24,7 +25,7 @@ export default class App extends Component {
         part: "snippet",
         maxResults: 5,
         type: "video",
-        key: KEY
+        key: YOUTUBE_KEY
       }
     });
     this.setState({ 

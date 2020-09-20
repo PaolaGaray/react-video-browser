@@ -24,6 +24,7 @@ export default class SearchBar extends Component {
                         <label>Video Search</label>
                         <input
                             type="text"
+                            placeholder="Search..."
                             value={this.state.query}
                             onChange={this.handleInputChange}>
                         </input>
