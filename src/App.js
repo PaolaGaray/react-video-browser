@@ -15,7 +15,7 @@ export default class App extends Component {
   };
 
   componentDidMount = () => {
-    this.handleSearchSubmit('Klangkarussell')
+    this.handleSearchSubmit('disclosure')
   }
 
   handleSearchSubmit = async (query) => {
