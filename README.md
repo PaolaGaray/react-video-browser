@@ -1,4 +1,4 @@
-This is a React App implemented by using Hooks. Styles made with Semantic UI.
+This is a React App implemented using Hooks. Styles were done with Semantic UI.
 
 ##  Custom Hooks
 - `useVideos()`: it is a reusable custom hook with all the video fetching logic. It is implemented with `useState()` and `useEffect()`. It receives a term with a selected video and returns a list of videos and a function that also updates that list of videos.
